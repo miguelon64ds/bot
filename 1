@@ -30,3 +30,20 @@ async def on_message(message):
 
 
 client.run("MTEyOTA5Mjk5MTIzMjAwMDA5MA.GKWCuG.Fpa0OrKMUkEIQCYGnHg9rTQNBDvLach1_Yrav0")
+
+#funciones
+
+import random
+
+def gen_pass(pass_length):
+    elements = "+-/*!&$#?=@<>"
+    password = ""
+
+    for i in range(pass_length):
+        password += random.choice(elements)
+
+    return password
+
+def gen_emoji(index):
+    emoji = ["\U0001f600", "\U0001f642", "\U0001F606", "\U0001F923"]
+    return emoji[index]
