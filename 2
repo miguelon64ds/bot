@@ -1,0 +1,31 @@
+import discord
+from discord.ext import commands
+import os
+import random
+
+intents=discord.Intents.default()
+intents.message_content=True
+
+bot=commands.Bot(command_prefix="$",intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f"iniciaste secion como {bot.user}")
+
+@bot.command()
+async def meme(ctx):
+    imagenes_cargadas=random.choice(os.listdir("imagenes"))
+    with open(f'imagenes/{imagenes_cargadas}', 'rb') as f:
+        # ¡Vamos a almacenar el archivo de la biblioteca Discord convertido en esta variable!
+        picture = discord.File(f)
+    # A continuación, podemos enviar este archivo como parámetro.
+    await ctx.send(file=picture)
+
+@bot.command()
+async def ride(ctx):
+    imagenes_generadas=random.choice(os.listdir("coches"))
+    with open(f'coches/{imagenes_generadas}', 'rb') as f:
+        # ¡Vamos a almacenar el archivo de la biblioteca Discord convertido en esta variable!
+        picture = discord.File(f)
+    # A continuación, podemos enviar este archivo como parámetro.
+    await ctx.send(file=picture)
