@@ -1,0 +1,21 @@
+import discord
+import random
+from discord.ext import commands
+
+intents=discord.Intents.default()
+intents.message_content=True
+
+bot =commands.Bot(command_prefix="$" , intents=intents)
+
+enlaces = ["https://random.dog/woof.json",
+         "https://randomfox.ca/floof/"]
+
+@bot.event
+async def on_ready():
+    print(f"iniciaste sesion correctamente ID: {bot.user.id} , Usuario ,{bot.user} ")
+@bot.command()
+async def API (ctx):
+    enlace=random.choice(enlaces)
+    await ctx.send(f"aqui te muestro un enlace: {enlace}")
+
+bot.run("")
